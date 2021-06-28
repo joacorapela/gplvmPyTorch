@@ -8,4 +8,4 @@ data/*
 results/*
 !results/.git_keep_dir
 figures/*
-!figures/.git_keep_dir
+!figures/59052569_pytorchOptim_*.png
