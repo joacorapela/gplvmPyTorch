@@ -25,12 +25,12 @@ def main(argv):
     max_iter = 10000
     line_search_fn = "strong_wolfe"
     fig_title_pattern = "ELBO={:.02f}"
-    data_filename = "../../data/DataTrn.txt"
-    data_labels_filename = "../../data/DataTrnLbls.txt"
-    elbo_fig_filename_pattern = "../../figures/{:08d}_pytorchOptim_elbo.png"
-    lengthscales_fig_filename_pattern = "../../figures/{:08d}_pytorchOptim_lengthscales.png"
-    latents_fig_filename_pattern = "../../figures/{:08d}_pytorchOptim_2latents.png"
-    model_save_filename_pattern = "../../results/{:08d}_pytorch_model.npz"
+    data_filename = "../data/DataTrn.txt"
+    data_labels_filename = "../data/DataTrnLbls.txt"
+    elbo_fig_filename_pattern = "../figures/{:08d}_pytorchOptim_elbo.png"
+    lengthscales_fig_filename_pattern = "../figures/{:08d}_pytorchOptim_lengthscales.png"
+    latents_fig_filename_pattern = "../figures/{:08d}_pytorchOptim_2latents.png"
+    model_save_filename_pattern = "../results/{:08d}_pytorch_model.npz"
 
     file_exists = True
     while file_exists:
