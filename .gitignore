@@ -2,3 +2,10 @@
 *.swp
 *.nfs*
 *~
+data/*
+!data/DataTst.txt
+!data/DataTstLbls.txt
+results/*
+!results/.git_keep_dir
+figures/*
+!figures/.git_keep_dir
