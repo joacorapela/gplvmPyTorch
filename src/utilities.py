@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+import gpytorch
 
 def computePsi1(scale, lengthscales, variational_mean, variational_var, inducing_variable):
     lengthscales2 = torch.square(lengthscales)
@@ -30,3 +31,18 @@ def computePsi2(scale, lengthscales, variational_mean, variational_var, inducing
     answer = torch.sum(psi2, 0)
     return answer
 
+def simulate(N, D, Q, output_scale, lengthscales, likelihood_var):
+    X = torch.reshape(input=torch.normal(mean=0, std=torch.ones(N*Q)),
+                      shape=(N,Q))
+    kernel = gpytorch.kernels.ScaleKernel(gpytorch.kernels.RBFKernel(ard_num_dims=Q))
+    kernel.outputscale = output_scale
+    kernel.base_kernel.lengthscale = lengthscales
+    K_NN = kernel(X).evaluate()
+    I_N = torch.eye(N, dtype=torch.double)
+    Y = torch.empty(size=(N, D), dtype=torch.double)
+    mean = torch.zeros(N, dtype=torch.double)
+    cov = K_NN+likelihood_var*I_N
+    mvn = torch.distributions.MultivariateNormal(mean, cov)
+    for d in range(D):
+        Y[:,d] = mvn.sample()
+    return Y, X
