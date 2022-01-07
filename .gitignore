@@ -9,3 +9,5 @@ results/*
 !results/.git_keep_dir
 figures/*
 !figures/59052569_pytorchOptim_*.png
+examples/*
+!examples/*.ipynb
