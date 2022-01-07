@@ -14,7 +14,6 @@ import stats
 import utilities
 
 def main(argv):
-    nudget = 1e-6
     latent_dim = 10  # number of latent dimensions
     num_inducing = 50  # number of inducing pts
     variational_var_init = 0.5 # initial value for variational variance
@@ -64,7 +63,6 @@ def main(argv):
         kernel=kernel,
         inducing_variable=inducing_variable,
         likelihood_var = likelihood_var,
-        nudget = nudget,
     )
     gplvm = gplvm.double()
 

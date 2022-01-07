@@ -12,8 +12,7 @@ class BayesianGPLVM(gpytorch.Module):
                  inducing_variable, likelihood_var,
                  variational_var_constraint=None,
                  likelihood_var_constraint=None,
-                 prior_mean=None, prior_var=None,
-                 nudget=1e-6):
+                 prior_mean=None, prior_var=None):
         super(BayesianGPLVM, self).__init__()
 
         self.data = data
@@ -50,7 +49,6 @@ class BayesianGPLVM(gpytorch.Module):
             prior_var = torch.ones((num_obs, dim_latents), dtype=torch.double)
         self.prior_mean = prior_mean
         self.prior_var = prior_var
-        self.nudget = nudget
 
     @property
     def variational_var(self):
@@ -77,6 +75,7 @@ class BayesianGPLVM(gpytorch.Module):
         self.initialize(raw_likelihood_var=self.raw_likelihood_var_constraint.inverse_transform(value))
 
     def elbo(self, psi0=None, psi1=None, psi2=None, write_debug=True):
+        # import pdb; pdb.set_trace()
         Y_data = self.data
 
         N = Y_data.shape[0]
@@ -108,7 +107,6 @@ class BayesianGPLVM(gpytorch.Module):
                                          variational_var=self.variational_var,
                                          inducing_variable=self.inducing_variable)
         cov_uu = self.kernel(self.inducing_variable).evaluate()
-        cov_uu = cov_uu + self.nudget*torch.eye(cov_uu.shape[0])
         # begin debug
         e_values, e_vectors = torch.eig(cov_uu)
         if e_values.min()<0:
