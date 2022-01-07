@@ -4,4 +4,4 @@ This implementation is a modification of code from the [Bayesian GP-LVM in GPflo
 
 An example script running this implementation can be found [here](scripts/doOptimizeBGPLVM.py). Running this script will generate figures similar to the ones below. Compare them with those in Figure 1 in [Titsias and Lawrence, 2010](http://proceedings.mlr.press/v9/titsias10a/titsias10a.pdf).
 
-<img src="figures/59052569_pytorchOptim_elbo.png" width="550"><img src="figures/59052569_pytorchOptim_lengthscales.png" width="550"><img src="figures/59052569_pytorchOptim_2latents.png" width="550">
+<img src="figures/46303985_pytorchOptim_elbo.png" width="550"><img src="figures/46303985_pytorchOptim_lengthscales.png" width="550"><img src="figures/46303985_pytorchOptim_2latents.png" width="550">
